@@ -45,6 +45,18 @@
     <ClCompile Include="DBLoaderToFileLoaderAdapter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BEPatientAlertLevelsStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="APPatientAlertLevelsStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MZPatientAlertLevelsStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TSSPatientAlertLevelsStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractPatientDatabaseLoader.h">
@@ -59,7 +71,7 @@
     <ClInclude Include="Patient.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PatientAlertLevels.h">
+    <ClInclude Include="IPatientAlertLevelsStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PatientDatabaseLoader.h">
@@ -78,6 +90,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DBLoaderToFileLoaderAdapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BEPatientAlertLevelsStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="APPatientAlertLevelsStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MZPatientAlertLevelsStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TSSPatientAlertLevelsStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

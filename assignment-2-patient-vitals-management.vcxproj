@@ -127,28 +127,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="APPatientAlertLevelsStrategy.cpp" />
     <ClCompile Include="assignment-2-patient-vitals-management.cpp" />
+    <ClCompile Include="BEPatientAlertLevelsStrategy.cpp" />
     <ClCompile Include="DBLoaderToFileLoaderAdapter.cpp" />
     <ClCompile Include="GPNotificationSystemFacade.cpp" />
     <ClCompile Include="HospitalAlertSystemFacade.cpp" />
+    <ClCompile Include="MZPatientAlertLevelsStrategy.cpp" />
     <ClCompile Include="Patient.cpp" />
     <ClCompile Include="PatientDatabaseLoader.cpp" />
     <ClCompile Include="PatientFileLoader.cpp" />
     <ClCompile Include="PatientManagementSystem.cpp" />
     <ClCompile Include="Person.cpp" />
+    <ClCompile Include="TSSPatientAlertLevelsStrategy.cpp" />
     <ClCompile Include="Vitals.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractPatientDatabaseLoader.h" />
+    <ClInclude Include="APPatientAlertLevelsStrategy.h" />
+    <ClInclude Include="BEPatientAlertLevelsStrategy.h" />
     <ClInclude Include="DBLoaderToFileLoaderAdapter.h" />
     <ClInclude Include="GPNotificationSystemFacade.h" />
     <ClInclude Include="HospitalAlertSystemFacade.h" />
+    <ClInclude Include="MZPatientAlertLevelsStrategy.h" />
     <ClInclude Include="Patient.h" />
-    <ClInclude Include="PatientAlertLevels.h" />
+    <ClInclude Include="IPatientAlertLevelsStrategy.h" />
     <ClInclude Include="PatientDatabaseLoader.h" />
     <ClInclude Include="PatientFileLoader.h" />
     <ClInclude Include="PatientManagementSystem.h" />
     <ClInclude Include="Person.h" />
+    <ClInclude Include="TSSPatientAlertLevelsStrategy.h" />
     <ClInclude Include="Vitals.h" />
   </ItemGroup>
   <ItemGroup>

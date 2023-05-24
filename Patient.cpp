@@ -22,14 +22,12 @@ Patient::Patient(const std::string& firstName, const std::string& lastName, std:
 {
 }
 
-int Patient::age() const
-{	
+int Patient::age() const{	
 	// an inaccurate age estimate but fine for assignment purposes
 	return 2022 - (1900 + _birthday.tm_year);
 }
 
-std::string Patient::uid() const
-{
+std::string Patient::uid() const{
 	std::stringstream ss;
 	ss << (char)std::tolower(_lastName.at(0)) 
 	   << (char)std::tolower(_firstName.at(0))
@@ -38,14 +36,12 @@ std::string Patient::uid() const
 	return ss.str();
 }
 
-std::string Patient::humanReadableID() const
-{
+std::string Patient::humanReadableID() const{
 
 	return "" + _lastName + ", " + _firstName + " (" + uid() + ")";
 }
 
-std::ostream& operator<<(std::ostream& os, const Patient& p)
-{
+std::ostream& operator<<(std::ostream& os, const Patient& p){
 	os << p.uid() << "|" << std::put_time(&p._birthday, "%d-%m-%Y") << "|" << p._lastName << "," << p._firstName << "|";
 	
 	auto diagnoses = p.diagnoses();
@@ -65,8 +61,7 @@ std::ostream& operator<<(std::ostream& os, const Patient& p)
 	return os;
 }
 
-void Patient::addDiagnosis(const std::string& diagnosis)
-{
+void Patient::addDiagnosis(const std::string& diagnosis){
 	_ASSERT(diagnosis == Diagnosis::AMORIA_PHLEBITIS ||
 		diagnosis == Diagnosis::BONUS_ERUPTUS ||
 		diagnosis == Diagnosis::MAD_ZOMBIE_DISEASE ||
@@ -74,29 +69,46 @@ void Patient::addDiagnosis(const std::string& diagnosis)
 	_diagnosis.push_back(diagnosis);
 }
 
-const std::string& Patient::primaryDiagnosis() const
-{
+const std::string& Patient::primaryDiagnosis() const{
 	return _diagnosis.front();
 }
 
-const std::vector<std::string>& Patient::diagnoses() const
-{
+const std::vector<std::string>& Patient::diagnoses() const{
 	return _diagnosis;
 }
 
-void Patient::addVitals(const Vitals* v)
-{
+void Patient::addVitals(const Vitals* v){
+
 	_vitals.push_back(v);
-	// TODO: calculate alert levels
+
+	//calculate and set alert levels if adding vitals after init load from file
+	if (!v->isOnInitFileLoad()) {
+
+		// I MIGHT NEED A DIAGNOSIS CONSTRUCTOR, AND IT KNOWS ABOUT THE CALC ALERT LEVEL STRATEGY
+		//SEE 30 MIN INTO THE VIDEO 
+		//so create a Diagnosis object and pass in it's calcAlertLevel strategy with it 
+		//see 31 min - 
+		//OR DOES A PATIENT SIMPLY HAVE A calcAlertLevelStrategy  I THINK THIS IS IS
+		
+		std::string pd = primaryDiagnosis();
+
+		// I could also pass in a different paramater 
+
+		//IPatientAlertLevelsStrategy pal;
+		//AlertLevel al = pal.calculateAlertLevels(pd, v);
+		AlertLevel al = _patientAlertLevelsStrategy->calculateAlertLevels(*this);
+		
+		setAlertLevel(al);
+
+	}
+	
 }
 
-const std::vector<const Vitals*> Patient::vitals() const
-{
+const std::vector<const Vitals*> Patient::vitals() const{
 	return _vitals;
 }
 
-void Patient::setAlertLevel(AlertLevel level)
-{
+void Patient::setAlertLevel(AlertLevel level){
 	_alertLevel = level;
 
 	if (_alertLevel > AlertLevel::Green) {
@@ -114,4 +126,8 @@ void Patient::setAlertLevel(AlertLevel level)
 		}
 		cout << endl;
 	}
+}
+
+void Patient::setPatientAlertLevelsStrategy(IPatientAlertLevelsStrategy* strategy) {
+	_patientAlertLevelsStrategy = strategy;
 }

@@ -8,6 +8,11 @@
 
 #include "Patient.h"
 #include "Vitals.h"
+#include "IPatientAlertLevelsStrategy.h"
+#include "BEPatientAlertLevelsStrategy.h";
+#include "APPatientAlertLevelsStrategy.h";
+#include "MZPatientAlertLevelsStrategy.h";
+#include "TSSPatientAlertLevelsStrategy.h";
 
 using namespace std;
 
@@ -54,8 +59,8 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
 
             // Access the individual words
             if (firstAndLastName.size() == 2) {
-                firstName = firstAndLastName[0];
-                lastName = firstAndLastName[1];
+                firstName = firstAndLastName[1];
+                lastName = firstAndLastName[0];
             }
 
             Patient* patient = new Patient(firstName, lastName, birthday);
@@ -96,7 +101,7 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
                     int rrInt = std::stoi(vitalsSingle[3]);
 
                     //create vital objects and add to patient 
-                    Vitals* v = new Vitals(btFloat, bpInt, hrInt, rrInt);
+                    Vitals* v = new Vitals(btFloat, bpInt, hrInt, rrInt, true);
                     patient->addVitals(v);
                 }
 
@@ -120,7 +125,7 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
                 int rrInt = std::stoi(vitalsSingle[3]);
 
                 //create vital object and add to patient 
-                Vitals* v = new Vitals(btFloat, bpInt, hrInt, rrInt);
+                Vitals* v = new Vitals(btFloat, bpInt, hrInt, rrInt, true);
                 patient->addVitals(v);
                
             
@@ -132,15 +137,19 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
             // Assign the diagnosis based on the input
             if (diagnosis == Diagnosis::BONUS_ERUPTUS) {
                 assignedDiagnosis = Diagnosis::BONUS_ERUPTUS;
+                patient->setPatientAlertLevelsStrategy(new BEPatientAlertLevelsStrategy());
             }
             else if (diagnosis == Diagnosis::AMORIA_PHLEBITIS) {
                 assignedDiagnosis = Diagnosis::AMORIA_PHLEBITIS;
+                patient->setPatientAlertLevelsStrategy(new APPatientAlertLevelsStrategy());
             }
             else if (diagnosis == Diagnosis::MAD_ZOMBIE_DISEASE) {
                 assignedDiagnosis = Diagnosis::MAD_ZOMBIE_DISEASE;
+                patient->setPatientAlertLevelsStrategy(new MZPatientAlertLevelsStrategy());
             }
             else if (diagnosis == Diagnosis::THREE_STOOGES_SYNDROME) {
                 assignedDiagnosis = Diagnosis::THREE_STOOGES_SYNDROME;
+                patient->setPatientAlertLevelsStrategy(new TSSPatientAlertLevelsStrategy());
             }
             //patient has more than 1 diagnosis, need to split up the strings 
             else {
@@ -157,6 +166,28 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
                 //loop through vector and add to patient
                 for (const std::string& diag : diagnosisMultiple) {
                     patient->addDiagnosis(diag);
+                }
+
+                std::string pd = patient->primaryDiagnosis();
+
+                if (pd == Diagnosis::BONUS_ERUPTUS) {
+                    patient->setPatientAlertLevelsStrategy(new BEPatientAlertLevelsStrategy());
+                }
+
+                else if (pd == Diagnosis::AMORIA_PHLEBITIS) {
+                    patient->setPatientAlertLevelsStrategy(new APPatientAlertLevelsStrategy());
+                }
+
+                else if (pd == Diagnosis::MAD_ZOMBIE_DISEASE) {
+                    patient->setPatientAlertLevelsStrategy(new MZPatientAlertLevelsStrategy());
+                }
+
+                else if (pd == Diagnosis::THREE_STOOGES_SYNDROME) {
+                    patient->setPatientAlertLevelsStrategy(new TSSPatientAlertLevelsStrategy());
+                }
+
+                else {
+                    std::cout << "patient alert levels strategy could not be set";
                 }
 
                 patients.push_back(patient);

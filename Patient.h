@@ -4,10 +4,12 @@
 #include <vector>
 #include <memory>
 
-#include "PatientAlertLevels.h"
+#include "IPatientAlertLevelsStrategy.h"
 
 class Vitals;
 
+// alert levels for patient vitals
+//enum class AlertLevel { Green, Yellow, Orange, Red };
 
 class Diagnosis {
 public:
@@ -49,10 +51,16 @@ public:
 	void setAlertLevel(AlertLevel level);
 	const AlertLevel alertLevel() const { return _alertLevel; }
 
+	//set the appropriate strategy for patient alerts based on the disease
+	void setPatientAlertLevelsStrategy(IPatientAlertLevelsStrategy* strategy);
+
 protected:
 	std::vector<std::string> _diagnosis;
 	std::vector<const Vitals*> _vitals;
 	AlertLevel _alertLevel;
+
+	//interface for strategy pattern
+	IPatientAlertLevelsStrategy* _patientAlertLevelsStrategy;
 
 	friend std::ostream& operator<<(std::ostream& os, const Patient& p);
 };

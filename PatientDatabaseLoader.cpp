@@ -26,7 +26,7 @@ void PatientDatabaseLoader::loadPatients(std::vector<Patient*>& patientIn){
     p->addDiagnosis(Diagnosis::BONUS_ERUPTUS);
     p->addDiagnosis(Diagnosis::MAD_ZOMBIE_DISEASE);
 
-    Vitals* v = new Vitals(37.5f, 80, 60, 16);
+    Vitals* v = new Vitals(37.5f, 80, 60, 16, true);
     p->addVitals(v);
 
     patientIn.push_back(p);

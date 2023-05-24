@@ -99,7 +99,7 @@ void PatientManagementSystem::addVitalsRecord(){
 		cout << "enter respitory rate: ";
 		cin >> respitoryRate;
 
-		Vitals* v = new Vitals(bodyTemperature, bloodPressure, heartRate, respitoryRate);
+		Vitals* v = new Vitals(bodyTemperature, bloodPressure, heartRate, respitoryRate, false);
 		_patientLookup[pid]->addVitals(v);
 	}
 	else {
