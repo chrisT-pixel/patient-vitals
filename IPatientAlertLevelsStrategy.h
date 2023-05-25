@@ -6,6 +6,7 @@
 class Patient;
 
 // alert levels for patient vitals
+// green = 0, yellow = 1, orange = 2, red = 3
 enum class AlertLevel { Green, Yellow, Orange, Red };
 
 class IPatientAlertLevelsStrategy {

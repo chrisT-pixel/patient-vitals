@@ -13,6 +13,7 @@
 #include "APPatientAlertLevelsStrategy.h";
 #include "MZPatientAlertLevelsStrategy.h";
 #include "TSSPatientAlertLevelsStrategy.h";
+#include "CompositeHighestAlertLevelStrategy.h"
 
 using namespace std;
 
@@ -158,6 +159,8 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
                 std::vector<std::string> diagnosisMultiple;
                 std::string dia;
 
+                auto highest = new CompositeHighestAlertLevelStrategy();
+
                 //put seperate diagnosis' in a vector
                 while (std::getline(issDiagnosis, dia, ',')) {
                     diagnosisMultiple.push_back(dia);
@@ -165,10 +168,25 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
 
                 //loop through vector and add to patient
                 for (const std::string& diag : diagnosisMultiple) {
+                    
                     patient->addDiagnosis(diag);
+
+                    if (diag == Diagnosis::BONUS_ERUPTUS) {
+                        highest->addStrategy(new BEPatientAlertLevelsStrategy());
+                    }
+                    else if (diag == Diagnosis::AMORIA_PHLEBITIS) {
+                        highest->addStrategy(new APPatientAlertLevelsStrategy());
+                    }
+                    else if (diag == Diagnosis::MAD_ZOMBIE_DISEASE) {
+                        highest->addStrategy(new MZPatientAlertLevelsStrategy());
+                    }
+                    else if (diag == Diagnosis::THREE_STOOGES_SYNDROME) {
+                        highest->addStrategy(new TSSPatientAlertLevelsStrategy());
+                    }
+
                 }
 
-                std::string pd = patient->primaryDiagnosis();
+                /*std::string pd = patient->primaryDiagnosis();
 
                 if (pd == Diagnosis::BONUS_ERUPTUS) {
                     patient->setPatientAlertLevelsStrategy(new BEPatientAlertLevelsStrategy());
@@ -188,7 +206,13 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
 
                 else {
                     std::cout << "patient alert levels strategy could not be set";
-                }
+                }*/
+               
+                //highest->addStrategy();
+
+
+
+                patient->setPatientAlertLevelsStrategy(highest);
 
                 patients.push_back(patient);
                

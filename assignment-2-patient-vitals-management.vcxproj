@@ -130,6 +130,7 @@
     <ClCompile Include="APPatientAlertLevelsStrategy.cpp" />
     <ClCompile Include="assignment-2-patient-vitals-management.cpp" />
     <ClCompile Include="BEPatientAlertLevelsStrategy.cpp" />
+    <ClCompile Include="CompositeHighestAlertLevelStrategy.cpp" />
     <ClCompile Include="DBLoaderToFileLoaderAdapter.cpp" />
     <ClCompile Include="GPNotificationSystemFacade.cpp" />
     <ClCompile Include="HospitalAlertSystemFacade.cpp" />
@@ -146,6 +147,7 @@
     <ClInclude Include="AbstractPatientDatabaseLoader.h" />
     <ClInclude Include="APPatientAlertLevelsStrategy.h" />
     <ClInclude Include="BEPatientAlertLevelsStrategy.h" />
+    <ClInclude Include="CompositeHighestAlertLevelStrategy.h" />
     <ClInclude Include="DBLoaderToFileLoaderAdapter.h" />
     <ClInclude Include="GPNotificationSystemFacade.h" />
     <ClInclude Include="HospitalAlertSystemFacade.h" />

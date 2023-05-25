@@ -57,6 +57,9 @@
     <ClCompile Include="TSSPatientAlertLevelsStrategy.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CompositeHighestAlertLevelStrategy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractPatientDatabaseLoader.h">
@@ -102,6 +105,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TSSPatientAlertLevelsStrategy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeHighestAlertLevelStrategy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
