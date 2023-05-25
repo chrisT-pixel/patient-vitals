@@ -6,8 +6,6 @@ class TSSPatientAlertLevelsStrategy : public IPatientAlertLevelsStrategy{
 public:
 
 	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v) {
-		
-		std::cout << "calculating alert levels for three stooges syndrome \n";
 
 		if (v->RR() > 50 && patient.age() > 30) {
 			return AlertLevel::Red;

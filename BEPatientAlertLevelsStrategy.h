@@ -6,8 +6,6 @@ public:
 
 	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v) {
 		
-		std::cout << "calculating alert levels for Bonus Eruptus \n";
-		
 		if (v->RR() > 50) {
 			return AlertLevel::Red;
 		}

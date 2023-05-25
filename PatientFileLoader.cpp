@@ -14,6 +14,8 @@
 #include "MZPatientAlertLevelsStrategy.h";
 #include "TSSPatientAlertLevelsStrategy.h";
 #include "CompositeHighestAlertLevelStrategy.h"
+#include "GPNotificationSystemFacade.h"
+#include "HospitalAlertSystemFacade.h"
 
 using namespace std;
 
@@ -64,7 +66,10 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
                 lastName = firstAndLastName[0];
             }
 
+            //create patient and notification alerts 
             Patient* patient = new Patient(firstName, lastName, birthday);
+            GPNotificationSystemFacade* gpNotify = new GPNotificationSystemFacade();
+            HospitalAlertSystemFacade* hospitalNotify = new HospitalAlertSystemFacade();
 
             if (vitals == "") {
                 //do nothing
@@ -186,43 +191,22 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
 
                 }
 
-                /*std::string pd = patient->primaryDiagnosis();
-
-                if (pd == Diagnosis::BONUS_ERUPTUS) {
-                    patient->setPatientAlertLevelsStrategy(new BEPatientAlertLevelsStrategy());
-                }
-
-                else if (pd == Diagnosis::AMORIA_PHLEBITIS) {
-                    patient->setPatientAlertLevelsStrategy(new APPatientAlertLevelsStrategy());
-                }
-
-                else if (pd == Diagnosis::MAD_ZOMBIE_DISEASE) {
-                    patient->setPatientAlertLevelsStrategy(new MZPatientAlertLevelsStrategy());
-                }
-
-                else if (pd == Diagnosis::THREE_STOOGES_SYNDROME) {
-                    patient->setPatientAlertLevelsStrategy(new TSSPatientAlertLevelsStrategy());
-                }
-
-                else {
-                    std::cout << "patient alert levels strategy could not be set";
-                }*/
-               
-                //highest->addStrategy();
-
-
-
+                //finalise all required patient info for patients with multiple diagnosis'
+                //and add to patients vector
                 patient->setPatientAlertLevelsStrategy(highest);
-
+                patient->addPatientSubscriber(hospitalNotify);
+                patient->addPatientSubscriber(gpNotify);
                 patients.push_back(patient);
                
             }
 
-
-            // create a new Patient object
+            //finalise all required patient info for patients with single diagnosis
+            //and add to patients vector
             if (!multipleDiagnosisFlag) {
                
                 patient->addDiagnosis(assignedDiagnosis);
+                patient->addPatientSubscriber(hospitalNotify);
+                patient->addPatientSubscriber(gpNotify);
                 patients.push_back(patient);
             }
             

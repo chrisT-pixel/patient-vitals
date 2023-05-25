@@ -113,8 +113,17 @@ void Patient::setAlertLevel(AlertLevel level){
 		}
 		cout << endl;
 	}
+
+	//notify all subscribers that the alert level has changed
+	for (PatientSubscriber* psub : _patientSubscribers) {
+		psub->alertLevelHasChanged(this);
+	}
 }
 
 void Patient::setPatientAlertLevelsStrategy(IPatientAlertLevelsStrategy* strategy) {
 	_patientAlertLevelsStrategy = strategy;
+}
+
+void Patient::addPatientSubscriber(PatientSubscriber* ps){
+	_patientSubscribers.push_back(ps);
 }

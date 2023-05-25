@@ -7,8 +7,6 @@ public:
 
 	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v) {
 		
-		std::cout << "calculating alert levels for Amoria Phelebitis \n";
-		
 		if (patient.age() < 12 && v->BP() < 30) {
 			return AlertLevel::Red;
 		}

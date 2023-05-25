@@ -7,8 +7,6 @@ public:
 
 	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v) {
 		
-		std::cout << "calculating alert levels for Mad Zombie \n";
-		
 		if (v->HR() > 130) {
 			return AlertLevel::Red;
 		}

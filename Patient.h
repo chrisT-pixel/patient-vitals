@@ -1,10 +1,12 @@
 #pragma once
 #include "Person.h"
+#include "PatientSubscriber.h"
 
 #include <vector>
 #include <memory>
 
 #include "IPatientAlertLevelsStrategy.h"
+#include <list>
 
 class Vitals;
 
@@ -54,6 +56,8 @@ public:
 	//set the appropriate strategy for patient alerts based on the disease
 	void setPatientAlertLevelsStrategy(IPatientAlertLevelsStrategy* strategy);
 
+	void addPatientSubscriber(PatientSubscriber* ps);
+
 protected:
 	std::vector<std::string> _diagnosis;
 	std::vector<const Vitals*> _vitals;
@@ -61,6 +65,9 @@ protected:
 
 	//interface for strategy pattern
 	IPatientAlertLevelsStrategy* _patientAlertLevelsStrategy;
+
+	//maintain a list of Patient Subscribers
+	std::list<PatientSubscriber*> _patientSubscribers;
 
 	friend std::ostream& operator<<(std::ostream& os, const Patient& p);
 };
