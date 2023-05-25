@@ -84,20 +84,7 @@ void Patient::addVitals(const Vitals* v){
 	//calculate and set alert levels if adding vitals after init load from file
 	if (!v->isOnInitFileLoad()) {
 
-		// I MIGHT NEED A DIAGNOSIS CONSTRUCTOR, AND IT KNOWS ABOUT THE CALC ALERT LEVEL STRATEGY
-		//SEE 30 MIN INTO THE VIDEO 
-		//so create a Diagnosis object and pass in it's calcAlertLevel strategy with it 
-		//see 31 min - 
-		//OR DOES A PATIENT SIMPLY HAVE A calcAlertLevelStrategy  I THINK THIS IS IS
-		
-		std::string pd = primaryDiagnosis();
-
-		// I could also pass in a different paramater 
-
-		//IPatientAlertLevelsStrategy pal;
-		//AlertLevel al = pal.calculateAlertLevels(pd, v);
-		AlertLevel al = _patientAlertLevelsStrategy->calculateAlertLevels(*this);
-		
+		AlertLevel al = _patientAlertLevelsStrategy->calculateAlertLevels(*this, v);
 		setAlertLevel(al);
 
 	}
@@ -112,7 +99,7 @@ void Patient::setAlertLevel(AlertLevel level){
 	_alertLevel = level;
 
 	if (_alertLevel > AlertLevel::Green) {
-		cout << "Patient: " << humanReadableID() << "has an alert level: ";
+		cout << "Patient: " << humanReadableID() << " has an alert level: ";
 		switch (_alertLevel) {
 		case AlertLevel::Yellow:
 			cout << "Yellow";
