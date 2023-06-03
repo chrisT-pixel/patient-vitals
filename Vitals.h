@@ -1,11 +1,13 @@
 #pragma once
+#ifndef _VITALS_H
+#define _VITALS_H
 
 #include <iostream>
 
 
-class Vitals
-{
+class Vitals{
 public:
+	
 	Vitals(float bt, int bp, int hr, int rr, bool ioifl) :
 		_bodyTemperature(bt),
 		_bloodPressure(bp),
@@ -23,6 +25,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const Vitals& p);
 
 protected:
+	
 	float _bodyTemperature;
 	int _bloodPressure;
 	int _heartRate;
@@ -31,3 +34,4 @@ protected:
 
 };
 
+#endif

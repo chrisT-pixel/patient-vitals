@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _PERSON_H
+#define _PERSON_H
 
 #include <ctime>
 #include <string>
@@ -18,3 +20,4 @@ protected:
 
 };
 
+#endif

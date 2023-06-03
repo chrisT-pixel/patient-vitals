@@ -211,8 +211,6 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
             }
             
         }
-
-
     }
 
     return patients;

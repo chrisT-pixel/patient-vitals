@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _PATIENT_H
+#define _PATIENT_H
 #include "Person.h"
 #include "PatientSubscriber.h"
 
@@ -59,6 +61,7 @@ public:
 	void addPatientSubscriber(PatientSubscriber* ps);
 
 protected:
+	
 	std::vector<std::string> _diagnosis;
 	std::vector<const Vitals*> _vitals;
 	AlertLevel _alertLevel;
@@ -72,3 +75,4 @@ protected:
 	friend std::ostream& operator<<(std::ostream& os, const Patient& p);
 };
 
+#endif

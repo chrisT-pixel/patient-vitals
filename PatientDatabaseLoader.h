@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _PATIENTDATABASELOADER_H
+#define _PATIENTDATABASELOADER_H
 
 #include "AbstractPatientDatabaseLoader.h"
 
@@ -10,10 +12,9 @@ public:
 
 	// Inherited via AbstractPatientDatabaseLoader
 	virtual void initialiseConnection() override;
-
 	virtual void loadPatients(std::vector<Patient*>& patientIn) override;
-
 	virtual void closeConnection() override;
 
 };
 
+#endif

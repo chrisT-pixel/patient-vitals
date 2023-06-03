@@ -1,7 +1,8 @@
 #pragma once
+#ifndef _PATIENTFILELOADER_H
+#define _PATIENTFILELOADER_H
 
 #include "DBLoaderToFileLoaderAdapter.h"
-
 #include <string>
 #include <vector>
 
@@ -17,3 +18,4 @@ public:
 
 };
 
+#endif

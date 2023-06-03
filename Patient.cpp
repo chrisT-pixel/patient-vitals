@@ -1,5 +1,4 @@
 #include "Patient.h"
-
 #include "Vitals.h"
 
 #include <iostream>

@@ -7,8 +7,7 @@
 #include "Vitals.h"
 
 
-void PatientDatabaseLoader::initialiseConnection()
-{
+void PatientDatabaseLoader::initialiseConnection(){
     // pretend this initialises a database connection
 }
 
@@ -33,7 +32,6 @@ void PatientDatabaseLoader::loadPatients(std::vector<Patient*>& patientIn){
 
 }
 
-void PatientDatabaseLoader::closeConnection()
-{
+void PatientDatabaseLoader::closeConnection(){
     // pretend this closes the database connection
 }

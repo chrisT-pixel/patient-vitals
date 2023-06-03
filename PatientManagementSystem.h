@@ -1,4 +1,6 @@
 #pragma once
+#ifndef _PATIENTMANAGEMENTSYSTEM_H
+#define _PATIENTMANAGEMENTSYSTEM_H
 
 #include <map>
 #include <memory>
@@ -41,3 +43,4 @@ protected:
 
 };
 
+#endif

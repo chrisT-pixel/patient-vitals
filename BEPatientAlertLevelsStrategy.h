@@ -1,28 +1,13 @@
 #pragma once
+#ifndef _BEPATIENTALERTLEVELSTRATEGY_H
+#define _BEPPATIENTALERTLEVELSTRATEGY_H
 #include "IPatientAlertLevelsStrategy.h"
 
 class BEPatientAlertLevelsStrategy : public IPatientAlertLevelsStrategy{
 public:
 
-	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v) {
-		
-		if (v->RR() > 50) {
-			return AlertLevel::Red;
-		}
-		else if (v->RR() > 30) {
-			return AlertLevel::Orange;
-		}
-		else if (v->RR() > 20) {
-			return AlertLevel::Yellow;
-		}
-		else {
-			return AlertLevel::Green;
-		}
-
-
-	}
-
+	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v);
 
 };
 
-
+#endif

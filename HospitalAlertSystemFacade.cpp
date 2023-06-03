@@ -3,11 +3,9 @@
 #include <iostream>
 
 
-HospitalAlertSystemFacade::HospitalAlertSystemFacade()
-{ }
+HospitalAlertSystemFacade::HospitalAlertSystemFacade(){ }
 
-HospitalAlertSystemFacade::~HospitalAlertSystemFacade()
-{ }
+HospitalAlertSystemFacade::~HospitalAlertSystemFacade(){ }
 
 void HospitalAlertSystemFacade::sendAlertForPatient(Patient* p){
 	

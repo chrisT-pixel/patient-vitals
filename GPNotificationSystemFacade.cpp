@@ -3,11 +3,9 @@
 #include <iostream>
 
 
-GPNotificationSystemFacade::GPNotificationSystemFacade()
-{ }
+GPNotificationSystemFacade::GPNotificationSystemFacade(){ }
 
-GPNotificationSystemFacade::~GPNotificationSystemFacade()
-{ }
+GPNotificationSystemFacade::~GPNotificationSystemFacade(){ }
 
 void GPNotificationSystemFacade::sendGPNotificationForPatient(Patient* p){
 	

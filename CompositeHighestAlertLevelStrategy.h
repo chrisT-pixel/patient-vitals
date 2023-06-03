@@ -1,38 +1,19 @@
 #pragma once
+#ifndef _COMPOSITEHIGHESTLEVELSTRATEGY_H
+#define _COMPOSITEHIGHESTLEVELSTRATEGY_H
 #include "IPatientAlertLevelsStrategy.h"
 #include <vector>
 
 class CompositeHighestAlertLevelStrategy : public IPatientAlertLevelsStrategy{
 public:
 
-	void addStrategy(IPatientAlertLevelsStrategy* strategy) {
-		_alertStrategies.push_back(strategy);
-	}
-
-	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v) {
-
-		std::cout << "calculating highest alert level \n";
-		AlertLevel highestAL = AlertLevel::Green;
-
-		for (auto strat : _alertStrategies) {
-			
-			AlertLevel currentAL = strat->calculateAlertLevels(patient, v);
-
-			if (currentAL > highestAL) {
-				highestAL = currentAL;
-			}
-		}
-
-		
-		return highestAL;
-
-	}
+	void addStrategy(IPatientAlertLevelsStrategy* strategy);
+	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v);
 
 protected:
 
 	std::vector<IPatientAlertLevelsStrategy*> _alertStrategies;
 
-
-
 };
 
+#endif
