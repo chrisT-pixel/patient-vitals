@@ -14,7 +14,7 @@ enum class AlertLevel { Green, Yellow, Orange, Red };
 class IPatientAlertLevelsStrategy {
 public:
 
-	virtual AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v) = 0;
+	virtual AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v) const = 0;
 
 };
 

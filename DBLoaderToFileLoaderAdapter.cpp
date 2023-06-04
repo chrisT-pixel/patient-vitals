@@ -9,7 +9,7 @@
 #include "Vitals.h"
 
 void DBLoaderToFileLoaderAdapter::initialiseConnection(){
-    // pretend this opens a file
+    // not used in this adapter
 }
 
 void DBLoaderToFileLoaderAdapter::loadPatients(std::vector<Patient*>& patientIn) {
@@ -19,5 +19,5 @@ void DBLoaderToFileLoaderAdapter::loadPatients(std::vector<Patient*>& patientIn)
 }
 
 void DBLoaderToFileLoaderAdapter::closeConnection(){
-    // pretend this closes the file
+    // not used in this adapter
 }

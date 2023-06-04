@@ -123,6 +123,10 @@ void Patient::setPatientAlertLevelsStrategy(IPatientAlertLevelsStrategy* strateg
 	_patientAlertLevelsStrategy = strategy;
 }
 
+IPatientAlertLevelsStrategy* Patient::getPatientAlertLevelsStrategy(){
+	return _patientAlertLevelsStrategy;
+}
+
 void Patient::addPatientSubscriber(PatientSubscriber* ps){
 	_patientSubscribers.push_back(ps);
 }

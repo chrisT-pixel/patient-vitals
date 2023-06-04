@@ -1,6 +1,6 @@
 #include "TSSPatientAlertLevelsStrategy.h"
 
-AlertLevel TSSPatientAlertLevelsStrategy::calculateAlertLevels(const Patient& patient, const Vitals* v) {
+AlertLevel TSSPatientAlertLevelsStrategy::calculateAlertLevels(const Patient& patient, const Vitals* v) const {
 
 	if (v->RR() > 50 && patient.age() > 30) {
 		return AlertLevel::Red;

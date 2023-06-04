@@ -55,8 +55,6 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
                 firstAndLastName.push_back(word);
             }
 
-           
-
             std::string firstName;
             std::string lastName;
 
@@ -82,7 +80,6 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
                 std::vector<std::string> vitalsMultiple;
                 std::string vit;
 
-               
                 std::string vitSin;
 
                 //seperate vital measurments and put in a vector
@@ -213,6 +210,11 @@ std::vector<Patient*> PatientFileLoader::loadPatientFile(const std::string& file
         }
     }
 
+    //close connection to the file
+    inFile.close();
+
     return patients;
 
 }
+
+

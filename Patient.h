@@ -55,8 +55,9 @@ public:
 	void setAlertLevel(AlertLevel level);
 	const AlertLevel alertLevel() const { return _alertLevel; }
 
-	//set the appropriate strategy for patient alerts based on the disease
+	//setters and getters for the appropriate strategy for patient alerts based on the disease
 	void setPatientAlertLevelsStrategy(IPatientAlertLevelsStrategy* strategy);
+	IPatientAlertLevelsStrategy* getPatientAlertLevelsStrategy();
 
 	void addPatientSubscriber(PatientSubscriber* ps);
 

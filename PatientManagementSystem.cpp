@@ -28,6 +28,8 @@ PatientManagementSystem::~PatientManagementSystem(){
 
 	// clear patient memory
 	for (Patient* p : _patients) {
+		IPatientAlertLevelsStrategy* strat = p->getPatientAlertLevelsStrategy();
+		delete strat;
 		delete p;
 	}
 }

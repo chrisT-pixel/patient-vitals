@@ -7,7 +7,7 @@
 class APPatientAlertLevelsStrategy : public IPatientAlertLevelsStrategy{
 public:
 
-	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v);
+	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v) const;
 
 };
 

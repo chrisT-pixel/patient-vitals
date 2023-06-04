@@ -4,7 +4,7 @@ void CompositeHighestAlertLevelStrategy::addStrategy(IPatientAlertLevelsStrategy
 	_alertStrategies.push_back(strategy);
 }
 
-AlertLevel CompositeHighestAlertLevelStrategy::calculateAlertLevels(const Patient& patient, const Vitals* v) {
+AlertLevel CompositeHighestAlertLevelStrategy::calculateAlertLevels(const Patient& patient, const Vitals* v) const {
 
 	AlertLevel highestAL = AlertLevel::Green;
 

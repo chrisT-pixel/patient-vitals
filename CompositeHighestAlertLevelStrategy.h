@@ -8,7 +8,7 @@ class CompositeHighestAlertLevelStrategy : public IPatientAlertLevelsStrategy{
 public:
 
 	void addStrategy(IPatientAlertLevelsStrategy* strategy);
-	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v);
+	AlertLevel calculateAlertLevels(const Patient& patient, const Vitals* v) const;
 
 protected:
 
